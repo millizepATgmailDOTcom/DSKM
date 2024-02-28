@@ -5,7 +5,7 @@ const eventDetails = {
   1: "5:00am - 8:00am ስብሐተ ነግህ\n\n5:30pm - 8:00pm ጸሎተ ሠርክ",
   2: "5:00am - 8:00am ስብሐተ ነግህ\n12:00pm - 3:30pm ጸሎተ ቅዳሴ\n5:30pm - 8:00pm ጸሎተ ሠርክ",
   3: "4:00am - 10:00am ስብሐተ ነግህ ወጸሎተ ቅዳሴ\n",
-  4: "12:00am - 12:00pm ሥርዓተ ማኅሌት ወጸሎተ ቅዳሴ",
+  4: "12:00am - 12:00pm \n\tሥርዓተ ማኅሌት ወጸሎተ ቅዳሴ",
   5: "5:00am - 8:00am ስብሐተ ነግህ\n12:00pm - 3:30pm ጸሎተ ቅዳሴ\n5:30pm - 8:00pm ጸሎተ ሠርክ",
   // Add more event details as needed
 };
@@ -50,7 +50,13 @@ const renderCalendar = () => {
 
         let isSenbet = (ethiopianDayOfWeek(currYear, currMonth, i) == 'Sunday' || ethiopianDayOfWeek(currYear, currMonth, i) == 'Saturday') ? 'sunday' : ''; // Check if it's Sunday
             //cell.innerHTML = `<li class="calendar-cell ${isToday} ${isSunday}" onclick="showPopup(${i})">${i}</li>`;
-        liTag += `<li class="${isToday}  ${isSenbet}"  onclick="showPopup(${i}, ${currMonth}, ${currYear})">${i}</li>`;
+        let is2016AbiyTsomePeriod = (currMonth === 7 || currMonth === 8) && !(currMonth === 8 && (i >= 28 && i <= 30))
+            && currYear === 2016;
+
+            if(!is2016AbiyTsomePeriod)
+            liTag += `<li class="${isToday}  ${isSenbet}" >${i}</li>`;
+            else
+            liTag += `<li class="${isToday}  ${isSenbet}"  onclick="showPopup(${i}, ${currMonth}, ${currYear})">${i}</li>`;
     }
 
     for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
@@ -393,6 +399,12 @@ function getLastDateOfLastEthiopianMonth() {
     let eventOfZday = {};
    if(yearArg == 2016 && ethiopianDayOfWeek(yearArg, monthArg, dayArg) == 'Sunday')
    eventOfZday = eventDetails[4];
+  else if(yearArg == 2016 && ethiopianDayOfWeek(yearArg, monthArg, dayArg) == 'Monday')
+  eventOfZday = eventDetails[1];
+  else if(yearArg == 2016 && ethiopianDayOfWeek(yearArg, monthArg, dayArg) == 'Friday')
+  eventOfZday = eventDetails[2];
+  else if(yearArg == 2016 && ethiopianDayOfWeek(yearArg, monthArg, dayArg) == 'Saturday')
+  eventOfZday = eventDetails[3];
     return eventOfZday;
   }
 
