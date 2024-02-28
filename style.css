@@ -1,0 +1,157 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  display: flex;
+  align-items: center;
+  padding: 0 0;
+  justify-content: center;
+  min-height: 100vh;
+  background: #9B59B6;
+}
+.wrapper{
+  width: 97%;
+  height: 97%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 150px 400px rgba(0,0,0,0.12);
+}
+.wrapper header{
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+header .icons{
+  display: flex;
+}
+header .icons span{
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  cursor: pointer;
+  color: #878787;
+  text-align: center;
+  line-height: 38px;
+  font-size: 1.9rem;
+  user-select: none;
+  border-radius: 50%;
+}
+.icons span:last-child{
+  margin-right: -10px;
+}
+header .icons span:hover{
+  background: #f2f2f2;
+}
+header .current-date{
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+.calendar{
+  padding: 5px;
+  width: calc(100%);
+  height: calc(100%);
+
+}
+.calendar ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
+}
+/* .calendar .days{
+  margin-bottom: 20px;
+} */
+.calendar li{
+  color: #333;
+  width: calc(100% / 7);
+  height: calc(100% / 5);
+  font-size: 2.07rem;
+  border: 1px solid black;
+}
+.calendar .weeks li{
+  font-weight: 500;
+  cursor: default;
+}
+.calendar .days li{
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  width: calc(100% / 7);
+  height: calc(100% / 5);
+  /* margin-top: 10px; */
+}
+.days li.inactive{
+  color: #aaa;
+}
+.days li.active{
+  color: #fff;
+}
+.days li::before{
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.days li.active::before{
+  background: #9B59B6;
+}
+.days li:not(.active):hover::before{
+  background: #f2f2f2;
+}
+
+           /* Pop-up styling */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ffffff;
+      padding: 20px;
+      width: 400px; /* Adjust width as needed */
+      height: 400px; /* Adjust height as needed */
+      overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      word-wrap: break-word; /* Enable word wrap */
+  }
+  .popup h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+  }
+  .popup textarea {
+    width: calc(100% - 40px); /* Adjust width to accommodate padding */
+    height: calc(100% - 120px); /* Adjust height to accommodate padding and button */
+    padding: 10px;
+    font-size: 18px;
+    border: none; /* Remove border */
+    border-radius: 5px;
+    resize: none; /* Prevent resizing of textarea */
+}
+  .popup button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  .popup button:hover {
+      background-color: #45a049;
+  }
+.sunday {
+  background-color: yellow; /*#f0f0f0de; /* Shade for Sundays */
+}
